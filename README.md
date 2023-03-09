@@ -1,3 +1,36 @@
+
+#MSACCESS_EPSBED2FEEDER
+
+-Columns must match the constraints
+-Code needs to be adjusted to the EPSBED code
+-Compatible with the 2013 year which has been fixed.
+-MSMHS – the dates in TGLHRMSMH, TGMSKMSMH, TGLLSMSMH, adjusted to yyyymmdd, the choose 'format cell' --> txt, paste notepad, paste column
+
+-TBKMK - set the NAKMKTBKM string length of char (40)
+-TBKMK - set the NODOSTBKM format must be as similar as NIDN, which is char (10)
+-TBKMK - NODOSTBKM need to be completed. Otherwise, then use the head of department
+-TRAKD - NODOSTRAK need to be completed. Otherwise, then use the head of department. And those in NODOSTRAK must also be listed in MSDOS. From the NODOSTRAK, we copy cell format as txt, paste in notepad, the paste it to the column
+
+(20140123.001 After researching, it turns out that you only need to make sure that the five column primary keys are unique. The key is in NODOSTRAK. It must be complete. When it is imported, the following problems will automatically occur, such as the text field length fulfilling, it will automatically be truncated, and it will adjust)
+
+(20140123.002 When we tested it, we copied and pasted it from MSDOS and then manually dragged it. If it still causes violations constraints. The solution: NODOSTRAK must be entered with the actual one)
+
+-TRAKD - KDPSTTRAK is reversed with KDJENTRAK. Reverse it
+-TRAKD - we copy the string from TMRENTRAK, TMRELTRAK, SKSMKTRAK to notepad, then copy them to respective column
+-TRAKD - CLASSTRAK only has two chars per item. In fact some are unknown and use stars, are even 5/A or only A (just letters). It can't be empty
+-TRAKD - NMDOSTRAK must be 30 char.
+
+20150521
+-Enter the head of department first: insert the column in E, column F will automatically forms. Insert the head study formula in F, then Drag the column and copy notepad and paste the text format
+
+-copy all->notepad-> text format
+
+-IF there is a notification "subscript out of range": RESTART ACCESS
+-If there is an error, usually the import_error table appears: try to copy everything, paste it into notepad,  then use a new sheet. Click and ctrl+A (all blocked), then right click, select format cell as text
+-If there is an error saying "violates / constraints / integrity", then there must be double columns
+
+<hr/>
+
 # MSACCESS_EPSBED2FEEDER
 
 -Kolom harus sesuai constraint
